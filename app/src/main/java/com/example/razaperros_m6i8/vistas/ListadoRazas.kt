@@ -26,7 +26,7 @@ class ListadoRazas : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentListadoRazasBinding.inflate(layoutInflater, container, false)
-        //initAdapter()
+        initAdapter()
         razaViewModel.getAllRazas()
         return binding.root
     }
@@ -34,7 +34,9 @@ class ListadoRazas : Fragment() {
     private fun initAdapter() {
         val adapter = AdapterRazas()
         binding.recyclerView.adapter = adapter
-        razaViewModel
+        razaViewModel.razaLiveData().observe(viewLifecycleOwner){
+            adapter.setData(it)
+        }
     }
 
 

@@ -46,9 +46,9 @@ class AdapterRazas : RecyclerView.Adapter<AdapterRazas.ItemRazasViewHolder>() {
         holder.bind(raza)
     }
 
-    fun setData(razas: List<RazaEntity>){
+    fun setData(raza: List<RazaEntity>){
         this.listItemRazas.clear()
-        this.listItemRazas.addAll(razas)
+        this.listItemRazas.addAll(raza)
         notifyDataSetChanged()
     }
 

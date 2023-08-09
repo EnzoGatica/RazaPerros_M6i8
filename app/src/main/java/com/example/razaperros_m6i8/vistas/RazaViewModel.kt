@@ -12,6 +12,7 @@ class RazaViewModel(application: Application): AndroidViewModel(application) {
 
     private val repositorio: Repositorio
 
+    fun razaLiveData() = repositorio.obtenerRazaEntentity()
 
     init {
         val api = PerrosRetrofit.gesRetroFitAves()
