@@ -5,21 +5,23 @@ import android.os.Bundle
 
 /*
 [] 2 pantallas: Listado y detalle
-[] Permiso de internet
-[] ViewBinding
-[] Dependencias: Coil, Room, Retrofit, navigation, viewModel
+[x] Permiso de internet
+[x] ViewBinding
+[x] Dependencias: Coil, Room, Retrofit, navigation, viewModel
+[x] Remoto:
+    [x] Dataclass
+    [x] API (interfaz)
+    [x] Retrofit
+[x] Local:
+    [x] Database
+    [x] Entity
+    [x] DAO
+[x] Repositorio
 [] navigation
 [] Listado: RecyclerView + ViewHolder + Adapter
 [] Detalle: RecyclerView + ViewHolder + Adapter
-[] Repositorio
-[] Remoto:
-    [] Dataclass
-    [] API (interfaz)
-    [] Retrofit
-[] Local:
-    [] Database
-    [] Entity
-    [] DAO
+
+
  */
 
 class MainActivity : AppCompatActivity() {

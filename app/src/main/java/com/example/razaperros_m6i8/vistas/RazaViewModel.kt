@@ -1,4 +1,4 @@
-package com.example.razaperros_m6i8.Vistas
+package com.example.razaperros_m6i8.vistas
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -11,6 +11,7 @@ import kotlinx.coroutines.launch
 class RazaViewModel(application: Application): AndroidViewModel(application) {
 
     private val repositorio: Repositorio
+
 
     init {
         val api = PerrosRetrofit.gesRetroFitAves()
