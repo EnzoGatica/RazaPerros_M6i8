@@ -33,6 +33,7 @@ class ListadoRazas : Fragment() {
 
     private fun initAdapter() {
         val adapter = AdapterRazas()
+
         binding.recyclerView.adapter = adapter
         razaViewModel.razaLiveData().observe(viewLifecycleOwner){
             adapter.setData(it)
