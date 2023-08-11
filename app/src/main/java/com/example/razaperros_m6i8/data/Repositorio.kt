@@ -16,12 +16,11 @@ class Repositorio(private val perrosApi: PerrosApi,private val razaDao: RazaDao)
         try {
             val response = perrosApi.getDataPerros()
             if (response.isSuccessful) {
-                val message =
-                    response.body()!!.message// solo scando la parte de message, sin stattus
+                val message = response.body()!!.message// solo scando la parte de message, sin stattus
                 val keys = message.keys
 
                 keys.forEach {
-                    val razaEntity = RazaEntity(it)
+                    val razaEntity = it.toRazasEntity()//transforma de String razaentity por medio de la funcion extension
                     razaDao.insertRaza(razaEntity)
                 }
 
