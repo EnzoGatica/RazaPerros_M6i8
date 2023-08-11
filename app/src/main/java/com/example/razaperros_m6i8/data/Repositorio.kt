@@ -13,33 +13,41 @@ class Repositorio(private val perrosApi: PerrosApi,private val razaDao: RazaDao)
 
     fun obtenerDetalleEntentity(id: String): LiveData<List<RazaDetalleEntity>> = razaDao.getRazaDetalle(id)
     suspend fun getRazas(){
-        val response = perrosApi.getDataPerros()
-        if(response.isSuccessful){
-            val message = response.body()!!.message// solo scando la parte de message, sin stattus
-            val keys = message.keys
+        try {
+            val response = perrosApi.getDataPerros()
+            if (response.isSuccessful) {
+                val message =
+                    response.body()!!.message// solo scando la parte de message, sin stattus
+                val keys = message.keys
 
-            keys.forEach{
-                val razaEntity = RazaEntity(it)
-                razaDao.insertRaza(razaEntity)
+                keys.forEach {
+                    val razaEntity = RazaEntity(it)
+                    razaDao.insertRaza(razaEntity)
+                }
+
+            } else {
+                Log.e("repositorio", response.errorBody().toString())
             }
-
-        }else{
-            Log.e("repositorio", response.errorBody().toString())
+        }catch (exception: Exception){
+            Log.e("catch","")
         }
-
     }
 
     suspend fun getDetallePerro(id: String){
-        val response = perrosApi.getDetallePerro(id)
-        if(response.isSuccessful){
-            response.body()!!.message.forEach{
-                val razaDetalleEntity = RazaDetalleEntity(id,it)
-                razaDao.insertDetallePerro(razaDetalleEntity)
+        try {
+            val response = perrosApi.getDetallePerro(id)
+            if(response.isSuccessful){
+                response.body()!!.message.forEach{
+                    val razaDetalleEntity = RazaDetalleEntity(id,it)
+                    razaDao.insertDetallePerro(razaDetalleEntity)
+                }
+
+
+            }else{
+                Log.e("repositorio", response.errorBody().toString())
             }
-
-
-        }else{
-            Log.e("repositorio", response.errorBody().toString())
+        }catch (exception: Exception){
+            Log.e("catch","")
         }
 
     }
