@@ -38,7 +38,7 @@ class Repositorio(private val perrosApi: PerrosApi,private val razaDao: RazaDao)
             val response = perrosApi.getDetallePerro(id)
             if(response.isSuccessful){
                 response.body()!!.message.forEach{
-                    val razaDetalleEntity = RazaDetalleEntity(id,it)
+                    val razaDetalleEntity = it.toEntity(id) //RazaDetalleEntity(id,it) antes del test unitario a traves de una funcion de extension
                     razaDao.insertDetallePerro(razaDetalleEntity)
                 }
 
